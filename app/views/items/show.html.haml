@@ -1,4 +1,3 @@
-%p#notice= notice
 %p
   %strong Name:
   = @item.name
@@ -9,8 +8,8 @@
   %strong Price:
   = @item.price
 %p
-  %strong User:
-  = @item.user
+  %strong Seller:
+  = @item.user.name
 = link_to 'Edit', edit_item_path(@item)
 |
 \#{link_to 'Back', items_path}
