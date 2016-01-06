@@ -1,0 +1,1 @@
+simple ecommerce application, in rails, with cancancan and devise
