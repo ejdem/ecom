@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :roles
   resources :users
   root 'pages#home'
+  
+  scope "/admin" do
+    resources :users
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
