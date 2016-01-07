@@ -10,4 +10,6 @@ find ./app/views -name "*.html.erb" -print0 | xargs -0 rm
 
 adding post with ajax, how to pass argument to render (quite easy)
 
-in progess: deleting with ajax
+deleting with ajax
+
+carrierwave requires a lot of config :/ maybe I would try something else to deal with photos, at the moment, a bit fake, but works
