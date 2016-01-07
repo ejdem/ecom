@@ -1,13 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :items
-  resources :roles
-  resources :users
-  root 'pages#home'
+  devise_for :users #new_user_session
+                    #new_user_password
+                    #edit_user_password
+  resources :items  #items
+                    #new_item
+                    #edit_item
+                    #item
+  resources :roles  #new_role
+                    #edit_role
+                    #role
+  resources :users  #users
+                    #new_user
   
   scope "/admin" do
     resources :users
   end
+  
+  authenticated :user do
+    root 'items#index', as: :authenitacted_root
+  end
+  root 'pages#home'
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
