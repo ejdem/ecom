@@ -1,7 +1,7 @@
 
 %h1 Listing Items
 
-%table.table.table-hover
+%table.table.table-hover.table-striped.bg-default
   %thead
     %tr
       %th Name
@@ -21,11 +21,11 @@
         %td
           = item.user.name
         %td
-          = link_to 'Show', item, class:"btn btn-primary"
+          = link_to 'Show', item, class:"btn btn-primary btn-sm"
         %td
-          = link_to 'Edit', edit_item_path(item), class:"btn btn-warning"
+          = link_to 'Edit', edit_item_path(item), class:"btn btn-warning  btn-sm"
         %td
-          = link_to 'Destroy', item, method: :delete,class:"btn btn-danger",data: { confirm: 'Are you sure?' }
+          = link_to 'Destroy', item, method: :delete,class:"btn btn-danger  btn-sm",data: { confirm: 'Are you sure?' }
 
 %br
 
