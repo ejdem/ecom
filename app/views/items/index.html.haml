@@ -23,10 +23,12 @@
         %td
           = link_to 'Show', item, class:"btn btn-primary btn-sm"
         %td
-          = link_to 'Edit', edit_item_path(item), class:"btn btn-warning  btn-sm"
+          - if can? :update, item
+            = link_to 'Edit', edit_item_path(item), class:"btn btn-warning  btn-sm"
         %td
-          = link_to 'Destroy', item, method: :delete,class:"btn btn-danger  btn-sm",data: { confirm: 'Are you sure?' }
+          - if can? :destroy, item
+            = link_to 'Delete', item, method: :delete, class:"btn btn-danger btn-sm",data: { confirm: 'Are you sure?' }
 
 %br
-
-= link_to 'New Item', new_item_path, class:"btn btn-primary"
+- if can? :create, Item
+  = link_to 'New Item', new_item_path, class:"btn btn-primary"
