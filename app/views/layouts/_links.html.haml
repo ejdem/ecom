@@ -1,5 +1,7 @@
 - if user_signed_in?
-  %p Signed in as = current_user.email
+  %p
+    Signed in as
+    = current_user.email
   = link_to "edit", edit_user_registration_path, class: "btn btn-primary"
   = link_to "sign out", destroy_user_session_path, method: :delete, class: "btn btn-primary"
 - else

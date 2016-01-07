@@ -1,13 +1,22 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @user.name
-%p
-  %strong Email:
-  = @user.email
-%p
-  %strong Role:
-  = @user.role
-= link_to 'Edit', edit_user_path(@user)
-|
-\#{link_to 'Back', users_path}
+.row
+  %p
+    %strong
+      Joined on:
+      = @joined_on
+  %p
+    %strong last logged in
+    = @last_login
+.row
+  %p#notice= notice
+  %p
+    %strong Name:
+    = @user.name
+  %p
+    %strong Email:
+    = @user.email
+  %p
+    %strong Role:
+    = @user.role
+  = link_to 'Edit', edit_user_path(@user)
+  |
+  \#{link_to 'Back', users_path}

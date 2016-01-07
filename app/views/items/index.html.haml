@@ -1,7 +1,7 @@
 
 %h1 Listing Items
 
-%table
+%table.table.table-hover
   %thead
     %tr
       %th Name
@@ -12,13 +12,20 @@
   %tbody
     - @items.each do |item|
       %tr
-        %td = item.name
-        %td = item.description 
-        %td = item.price
-        %td = item.user.name
-        %td = link_to 'Show', item, class:"btn btn-primary"
-        %td = link_to 'Edit', edit_item_path(item), class:"btn btn-warning"
-        %td = link_to 'Destroy', item, method: :delete,class:"btn btn-danger",data: { confirm: 'Are you sure?' }
+        %td
+          = item.name
+        %td
+          = item.description 
+        %td
+          = item.price
+        %td
+          = item.user.name
+        %td
+          = link_to 'Show', item, class:"btn btn-primary"
+        %td
+          = link_to 'Edit', edit_item_path(item), class:"btn btn-warning"
+        %td
+          = link_to 'Destroy', item, method: :delete,class:"btn btn-danger",data: { confirm: 'Are you sure?' }
 
 %br
 
