@@ -20,7 +20,9 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'cancancan'
 
+gem 'faker'
 
+gem 'rmagick'
 gem 'carrierwave'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

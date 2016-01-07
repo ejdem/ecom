@@ -1,5 +1,7 @@
 %tr{id: "tr_#{item.id}"}
   %td
+    = image_tag item.image_url.to_s
+  %td
     = item.name
   %td
     = item.description 

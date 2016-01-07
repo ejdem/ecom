@@ -1,4 +1,4 @@
-= form_for @item, remote: true do |f|
+= form_for @item, remote: true, html: {multipart: true}  do |f|
   - if @item.errors.any?
     #error_explanation
       %h2
@@ -19,6 +19,10 @@
     = f.label :price
     %br/
     = f.text_field :price, class: "form-control"
+  .field
+    = f.label :image
+    %br/
+    = f.tfile_field :image, class: "form-control"
   .actions
     %br/
     = f.submit "create", class: "btn btn-primary form-control"
