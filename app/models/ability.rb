@@ -8,7 +8,7 @@ class Ability
       can :read,   Item
       can :create, Item
       can :update, Item do |item|
-        tem.try(:user) == user
+        item.try(:user) == user
       end
       can :destroy, Item do |item|
         item.try(:user) == user

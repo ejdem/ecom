@@ -26,7 +26,8 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Item was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
