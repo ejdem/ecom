@@ -10,10 +10,19 @@
   .field
     = f.label :name
     %br/
-    = f.text_field :name
+    = f.text_field :name, class: "form-control"
+  .field
+    = f.label :email
+    %br
+    = f.text_field :email, class: "form-control"
   .field
     = f.label :role_id
     %br/
     = collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true})
+  .field
+    = f.label :password
+    %br/
+    = f.password_field :password, placeholder: "leave it blank if unchanged"
+    
   .actions
     = f.submit
