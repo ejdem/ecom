@@ -7,3 +7,5 @@ $ find . -name '*erb' | \
 
 command to remove all .html.erb files      
 find ./app/views -name "*.html.erb" -print0 | xargs -0 rm
+
+finished at user controller to change update
