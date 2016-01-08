@@ -16,7 +16,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'haml-contrib'
 gem 'bootstrap-sass'
-
+gem 'will_paginate'
 gem 'devise'
 gem 'cancancan'
 
