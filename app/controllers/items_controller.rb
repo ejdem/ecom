@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @items = Item.all
+    @items = Item.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /items/1

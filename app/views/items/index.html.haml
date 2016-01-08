@@ -1,6 +1,6 @@
 
 %h1 Listing Items
-
+= will_paginate @items
 %table#items_table.table.table-hover.table-striped.bg-default
   %thead
     %tr
@@ -14,7 +14,7 @@
   %tbody
     - @items.each do |item|
       = render "item", :item => item
-
+= will_paginate @items
 %br
 - if can? :create, Item
   = link_to 'New Item', new_item_path, class:"btn btn-primary", id: "new_link", remote: true
