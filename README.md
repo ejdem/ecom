@@ -12,4 +12,7 @@ adding post with ajax, how to pass argument to render (quite easy)
 
 deleting with ajax
 
-carrierwave requires a lot of config :/ maybe I would try something else to deal with photos, at the moment, a bit fake, but works
+carrierwave finished, with a little help form Micheal Hartl, carrierwave works in development,
+uploading pictures with ajax needs << gem 'remotipart' >> to make it works smoothly
+it wokrs nice with mini_magic gem too
+<< gem 'fog'>> added to serve cloud uploading photos, to configure with AWS
