@@ -22,8 +22,10 @@ gem 'cancancan'
 
 gem 'faker'
 
-gem 'rmagick', require: false
-gem 'carrierwave'
+gem 'carrierwave', '0.10.0'
+gem 'mini_magick'
+gem 'fog'
+gem 'remotipart'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
