@@ -1,7 +1,8 @@
 %h3 search
 = form_tag items_path, method: "get" do
-  = text_field_tag :search
-  = submit_tag "search", class: "btn btn-primary"
+  = text_field_tag :search, params[:search], class:"form-control"
+  %br
+  = submit_tag "search", name:nil, class: "btn btn-primary"
 %br
 %h3 Listing Items
 = will_paginate @items
@@ -20,5 +21,6 @@
       = render "item", :item => item
 = will_paginate @items
 %br
+= link_to "all items", root_path, class:"btn btn-primary"
 - if can? :create, Item
   = link_to 'New Item', new_item_path, class:"btn btn-primary", id: "new_link", remote: true
