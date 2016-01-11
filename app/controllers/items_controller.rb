@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @items = Item.paginate(page: params[:page], per_page: 5)
+    if params[:search]
+      @items = Item.search(params[:search]).paginate(page: params[:page], per_page: 5)
+    else
+      @items = Item.paginate(page: params[:page], per_page: 5)
+    end
   end
 
   # GET /items/1
