@@ -5,9 +5,12 @@ class ItemsController < ApplicationController
 
   def index
     if params[:search]
-      @items = Item.search(params[:search]).paginate(page: params[:page], per_page: 5)
+      @items = Item.search(params[:search])
+                   .order(params[:sort])
+                   .paginate(page: params[:page], per_page: 5)
     else
-      @items = Item.paginate(page: params[:page], per_page: 5)
+      @items = Item.order(params[:sort])
+                   .paginate(page: params[:page], per_page: 5)
     end
   end
 
