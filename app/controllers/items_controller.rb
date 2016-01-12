@@ -1,11 +1,14 @@
 class ItemsController < ApplicationController
   load_and_authorize_resource
+  helper_method :sort_column, :sort_direction
  #before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
   def index
     if params[:search]
-      @items = Item.search(params[:search]).paginate(page: params[:page], per_page: 5)
+      @items = Item.search(params[:search]).order(params[:sort] + " " + params[:direction]).paginate(page: params[:page], per_page: 5)
+    elsif (params[:sort] && params[:direction])
+      @items = Item.order(params[:sort] + " " + params[:direction]).paginate(page: params[:page], per_page: 5)
     else
       @items = Item.paginate(page: params[:page], per_page: 5)
     end
@@ -74,5 +77,13 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:name, :description, :price, :user_id, :image)
+    end
+    
+    def sort_column
+      Item.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+    
+    def sort_direction
+      ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
