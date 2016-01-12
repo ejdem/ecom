@@ -1,24 +1,14 @@
-%h3 search
-= form_tag items_path, method: "get" do
-  = hidden_field_tag :direction, params[:direction]
-  = hidden_field_tag :sort,      params[:sort]
-  = text_field_tag :search,      params[:search], class:"form-control"
-  %br
-  = submit_tag "search", name:nil, class: "btn btn-primary"
-%br
-%h3 Listing Items
+
+%h1 Listing Items
 = will_paginate @items
 %table#items_table.table.table-hover.table-striped.bg-default
   %thead
     %tr
       %th image
-      %th
-        = sorting "name"
+      %th Name
       %th Description
-      %th
-        = sorting "price"
-      %th
-        = sorting "seller"
+      %th Price
+      %th Seller
       %th{:colspan => "3"}
         actions
   %tbody
@@ -26,6 +16,5 @@
       = render "item", :item => item
 = will_paginate @items
 %br
-= link_to "all items", root_path, class:"btn btn-primary"
 - if can? :create, Item
   = link_to 'New Item', new_item_path, class:"btn btn-primary", id: "new_link", remote: true

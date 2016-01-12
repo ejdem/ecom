@@ -4,24 +4,7 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    if params[:search]
-      @items = Item.search(params[:search])
-                   .order(params[:sort])
-                   .paginate(page: params[:page], per_page: 5)
-    else
-      @items = Item.order(sort_column + " " + sort_direction)
-                   .paginate(page: params[:page], per_page: 5)
-    end
-  end
-  
-  private
-  
-  def sort_column
-    Item.column_names.include?(params[:sort]) ? params[:sort] : "name"
-  end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    @items = Item.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /items/1
