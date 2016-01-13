@@ -1,4 +1,6 @@
 %p
+  = image_tag @item.image
+%p
   %strong Name:
   = @item.name
 %p
@@ -11,6 +13,6 @@
   %strong Seller:
   = @item.user.name
 - if can? :update, Item
-  = link_to 'Edit |', edit_item_path(@item), class:"btn btn-primary"
+  = link_to 'Edit', edit_item_path(@item), class:"btn btn-primary"
 
 \#{link_to 'Back', items_path, class:"btn btn-primary"}
