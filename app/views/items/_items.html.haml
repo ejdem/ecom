@@ -1,0 +1,21 @@
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort,      params[:sort]
+
+%h4 Listing Items
+= will_paginate @items
+%table#items_table.table.table-hover.table-striped.bg-default
+  %thead
+    %tr
+      %th image
+      %th 
+        = sorting "Name"
+      %th Description
+      %th
+        = sorting "Price"
+      %th Seller
+      %th{:colspan => "3"}
+        actions
+  %tbody
+    - @items.each do |item|
+      = render "item", :item => item
+= will_paginate @items

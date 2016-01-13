@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+$(function() {
+  $("body").on("click","#items th a", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#items_search input").keyup(function() {
+    $.get($("#items_search").attr("action"), $("#items_search").serialize(), null, "script");
+    return false;
+  });
+});

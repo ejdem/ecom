@@ -78,12 +78,4 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :description, :price, :user_id, :image)
     end
-    
-    def sort_column
-      Item.column_names.include?(params[:sort]) ? params[:sort] : "name"
-    end
-    
-    def sort_direction
-      ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
-    end
 end
