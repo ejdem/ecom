@@ -1,12 +1,17 @@
 %h4 Search
 = form_tag items_path, method: 'get', id: "items_search" do
   = text_field_tag :search,      params[:search], class: "form-control"
+  = select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name")
   %br
+  = submit_tag "search", name: nil, class: "btn btn-info"
+
+= form_tag items_path, method: 'get', id: "category_search" do  
+  
   =# submit_tag "search", name: nil, class: "btn btn-info"
   #items
     = render 'items'
 
-%br
+
 
 - if can? :create, Item
   = link_to 'New Item', new_item_path, class:"btn btn-primary", id: "new_link", remote: true

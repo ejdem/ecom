@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  require 'will_paginate/array'
   load_and_authorize_resource
   helper_method :sort_column, :sort_direction
  #before_action :set_item, only: [:show, :edit, :update, :destroy]
@@ -6,12 +7,30 @@ class ItemsController < ApplicationController
 
   def index
     if params[:search]
-      @items = Item.search(params[:search]).order(params[:sort] + " " + params[:direction]).paginate(page: params[:page], per_page: 5)
+      if params[:sort] && params[:direction]
+        @items = Item.search(params)
+                     .order(params[:sort] + " " + params[:direction])
+                     .paginate(page: params[:page], per_page: 5)
+      else
+        @categories = Item.where(category_id: params[:category_id].to_i)
+        @items = []
+        @categories.each do |i|
+          @items << i
+        end
+        @items = @items.paginate(page: params[:page], per_page: 5)
+      end
     elsif (params[:sort] && params[:direction])
-      @items = Item.order(params[:sort] + " " + params[:direction]).paginate(page: params[:page], per_page: 5)
+      @items = Item.order(params[:sort] + " " + params[:direction])
+                   .paginate(page: params[:page], per_page: 5)
+                   
+    elsif params[:category_search]
+      c = Category.find_by(name: params[:category_search])
+      @items = c.items
+      
     else
       @items = Item.paginate(page: params[:page], per_page: 5)
     end
+    
   end
 
   # GET /items/1
